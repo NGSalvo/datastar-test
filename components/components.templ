@@ -1,0 +1,32 @@
+package components
+
+import "github.com/delaneyj/datastar"
+
+templ Page() {
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<script type="module" defer src="https://cdn.jsdelivr.net/npm/@sudodevnull/datastar"></script>
+		</head>
+		<body>
+			<div>
+				{ children... }
+			</div>
+		</body>
+	</html>
+}
+
+templ ClockPage() {
+	@Page() {
+		<div data-on-load={ datastar.GET("/clock") }>
+			<h1>Clock</h1>
+			<div id="clock"></div>
+		</div>
+	}
+}
+
+templ ClockFragment(t string) {
+	<div id="clock">
+		{ t }
+	</div>
+}
